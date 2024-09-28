@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Line ID QR Code Popup Example</title>
+    <style>
+        #line-popup {
+            display: none; /* Initially hidden */
+            position: fixed; /* Position fixed so it stays in place */
+            background: #333; /* Background color */
+            color: white; /* Text color */
+            padding: 10px; /* Padding */
+            border-radius: 5px; /* Rounded corners */
+            z-index: 1000; /* Ensure it appears above other elements */
+            text-align: center; /* Center text in popup */
+        }
+        #line-popup button {
+            background: #555; /* Button background */
+            color: white; /* Button text color */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            padding: 5px 10px; /* Padding */
+            cursor: pointer; /* Pointer cursor */
+            margin-top: 10px; /* Space above button */
+        }
+        #line-popup button:hover {
+            background: #777; /* Darker shade on hover */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="btn-slide mt-1">
+        <i class="fa fa-share"></i>
+        <span>
+            <a href=""><i class="fab fa-facebook-f"></i></a>
+            <a href=""><i class="fab fa-twitter"></i></a>
+            <a href="#" onclick="showLinePopup(event);">
+                <i class="fab fa-line" style="font-size: 24px;"></i> <!-- Adjust icon size if needed -->
+            </a>
+        </span>
+    </div>
+
+    <!-- Popup HTML outside the button span -->
+    <div id="line-popup">
+        <img src="img/line.jpg" alt="Line QR Code" style="width: 150px; height: 150px;"> <!-- Replace with your QR code path -->
+        <button onclick="closeLinePopup()">Close</button>
+    </div>
+
+    <script>
+        function showLinePopup(event) {
+            console.log("Line button clicked");
+            event.preventDefault(); // Prevent default anchor behavior
+            var popup = document.getElementById("line-popup");
+            
+            // Position the popup near the icon
+            var icon = event.currentTarget; // Get the clicked icon
+            var rect = icon.getBoundingClientRect(); // Get the icon's position
+            popup.style.left = rect.left + 'px'; // Align left
+            popup.style.top = (rect.top + window.scrollY + icon.offsetHeight) + 'px'; // Align below
+        
+            popup.style.display = "block"; // Show the popup
+        }
+        
+        function closeLinePopup() {
+            var popup = document.getElementById("line-popup");
+            popup.style.display = "none"; // Hide the popup
+        }
+    </script>
+
+<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+    <div class="team-item p-4">
+        <div class="overflow-hidden mb-4">
+            <img class="img-fluid" src="img/team-2.jpg" alt="">
+        </div>
+        <h5 class="mb-0">Full Name</h5>
+        <p>Designation</p>
+        <div class="btn-slide mt-1">
+            <i class="fa fa-share"></i>
+            <span>
+                <a href=""><i class="fab fa-facebook-f"></i></a>
+                <a href=""><i class="fab fa-twitter"></i></a>
+                <a href="#" onclick="showLinePopup(event);">
+                    <i class="fab fa-line" style="font-size: 24px;"></i> <!-- Adjust icon size if needed -->
+                </a>
+            </span>
+        </div>
+        
+    </div>
+</div>
+
+
+
+
+</body>
+</html>
